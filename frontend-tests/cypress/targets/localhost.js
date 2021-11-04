@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+//Target site and login infomration
 module.exports = {
     base_url: 'localhost:3000',
     username: 'tester01',

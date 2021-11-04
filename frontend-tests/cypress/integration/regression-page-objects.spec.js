@@ -3,7 +3,15 @@
 //Target URL and login information
 import * as localhost from '../targets/localhost'
 
-//auto generated data
+//Test elements divided by page
+import * as indexFuncs from '../pages/indexPage'
+import * as dashFuncs from '../pages/dashPage'
+import * as roomFuncs from '../pages/roomsPage'
+import * as clientFuncs from '../pages/clientsPage'
+import * as billFuncs from '../pages/billsPage'
+import * as reservFuncs from '../pages/reservationsPage'
+
+//Auto generated fake data for input
 import faker from 'faker'
 let roomNum = faker.datatype.number()
 let floorNum = faker.datatype.number()
@@ -15,13 +23,7 @@ let phone = faker.phone.phoneNumber()
 let datePast = faker.date.past().toISOString().split('T')[0]
 let dateFuture = faker.date.future().toISOString().split('T')[0]
 
-//Test data divided by page
-import * as indexFuncs from '../pages/indexPage'
-import * as dashFuncs from '../pages/dashPage'
-import * as roomFuncs from '../pages/roomsPage'
-import * as clientFuncs from '../pages/clientsPage'
-import * as billFuncs from '../pages/billsPage'
-import * as reservFuncs from '../pages/reservationsPage'
+
 
 
 //Test Suite

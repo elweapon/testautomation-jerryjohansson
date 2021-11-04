@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
+//Page elements
 const createNewreservation = 'h2 > .btn'
 const menuButtonreservation = ':nth-child(2) > .action'
 const editreservation = '.menu > :nth-child(1)'
 const deletereservation = '.menu > :nth-child(2)'
 const backEditBtn = '[href="/reservations"]'
 
+//Input fields
 const pageContain = 'Reservations'
 const startDatereservation = ':nth-child(1) > input'
 const endDatereservation = ':nth-child(2) > input'
@@ -14,6 +16,7 @@ const roomreservation = ':nth-child(4) > select'
 const billreservation = ':nth-child(5) > select'
 const savereservation = '.blue'
 
+//Create a new Reservation
 function reservationCreate(cy, pastDate, futureDate){
     cy.contains(pageContain)
     cy.get(createNewreservation).click()
@@ -25,6 +28,7 @@ function reservationCreate(cy, pastDate, futureDate){
     cy.get(savereservation).click()
 }
 
+//Edit Reservation
 function reservationEdit(cy) {
     cy.contains(pageContain)
     cy.get(menuButtonreservation).click()
@@ -32,12 +36,14 @@ function reservationEdit(cy) {
     cy.get(backEditBtn).click()
 }
 
+//Delete Reservation
 function reservationDelete(cy) {
     cy.contains(pageContain)
     cy.get(menuButtonreservation).click()
     cy.get(deletereservation).click()
 }
 
+//Module Exports
 module.exports = {
     reservationCreate,
     reservationEdit,
