@@ -10,13 +10,14 @@ const backEditBtn = '[href="/bills"]'
 //Input fields
 const pageContain = 'Bills'
 const valueBill = 'input'
+const paidBill = '.checkbox'
 const saveBill = '.blue'
 
 //Create a new Bill
 function billCreate(cy, billValue){
     cy.contains(pageContain)
     cy.get(createNewBill).click()
-    cy.get(valueBill).type('25000')
+    cy.get(valueBill).type(billValue)
     cy.get(saveBill).click()
 }
 

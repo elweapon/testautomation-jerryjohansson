@@ -20,13 +20,17 @@ let fName = faker.name.firstName()
 let lName = faker.name.lastName()
 let email = faker.internet.email()
 let phone = faker.phone.phoneNumber()
+let billValue = faker.datatype.number()
 
-//ToISOString make the date format to "YYYY-MM-DD"
+//ToISOString() make the date format to "YYYY-MM-DD"
 let datePast = faker.date.past().toISOString().split('T')[0]
 let dateFuture = faker.date.future().toISOString().split('T')[0]
 
-
-
+//Arrays and Choose random entry from each array for input in creating room
+const roomCategory = ['Double', 'Single', 'Twin']
+const roomFeatures = ['Balcony', 'Ensuite', 'Sea View', 'Penthouse']
+const roomCateRng = Math.floor(Math.random() * roomCategory.length);
+const roomFeatRng = Math.floor(Math.random() * roomFeatures.length);
 
 //Test Suite
 describe('Test Suite', function(){
@@ -48,7 +52,7 @@ describe('Test Suite', function(){
     //Create a new Room
     it('Create a new room', function(){
         dashFuncs.viewRooms()
-        roomFuncs.roomCreate(cy, 'Double', roomNum, floorNum, priceNum, 'Balcony')
+        roomFuncs.roomCreate(cy, roomCategory[roomCateRng], roomNum, floorNum, priceNum, roomFeatures[roomFeatRng])
     })
     
     //Edit/Delete Room test
@@ -74,7 +78,7 @@ describe('Test Suite', function(){
     //Create a new Bill
     it('Create Bill', function(){
         dashFuncs.viewBills()
-        billFuncs.billCreate(cy)
+        billFuncs.billCreate(cy, billValue)
     })
 
     //Edit/Delete a bill
@@ -93,7 +97,10 @@ describe('Test Suite', function(){
     //Edit/Delete a reservation
     it('Edit/Delete Reservation', function(){
         dashFuncs.viewReservations()
-        reservFuncs.reservationEdit(cy)
+        //reservFuncs.reservationEdit(cy)
+        //Smal wait here beacuse sometimes i get a 404 page not found.
+        //I think it happens beacuse of the page do not load properly 
+        //cy.wait(500)
         reservFuncs.reservationDelete(cy)
     })
 
