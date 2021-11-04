@@ -20,6 +20,8 @@ let fName = faker.name.firstName()
 let lName = faker.name.lastName()
 let email = faker.internet.email()
 let phone = faker.phone.phoneNumber()
+
+//ToISOString make the date format to "YYYY-MM-DD"
 let datePast = faker.date.past().toISOString().split('T')[0]
 let dateFuture = faker.date.future().toISOString().split('T')[0]
 
