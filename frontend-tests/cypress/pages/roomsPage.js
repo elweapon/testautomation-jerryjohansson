@@ -5,6 +5,7 @@ const createNewRoom = 'h2 > .btn'
 const menuButtonRoom = ':nth-child(3) > .action'
 const editRoom = '.menu > :nth-child(1)'
 const deleteRoom = '.menu > :nth-child(2)'
+const roomHeader = ':nth-child(3) > :nth-child(2) > h3'
 const backEditBtn = '[href="/rooms"]'
 
 //Input fields
@@ -28,21 +29,25 @@ function roomCreate(cy, category, roomNum, floorNum, price, features){
     cy.get(priceRoom).type(price)
     cy.get(featuresRoom).select(features)
     cy.get(saveRoom).click()
+    cy.get(roomHeader).contains('Floor ' + floorNum + ', ' + 'Room ' + roomNum)
 }
 
 //Edit Room
-function roomEdit(cy) {
+function roomEdit(cy, floorNum, roomNum) {
     cy.contains(pageContain)
+    cy.get(roomHeader).contains('Floor ' + floorNum + ', ' + 'Room ' + roomNum)
     cy.get(menuButtonRoom).click()
     cy.get(editRoom).click()
     cy.get(backEditBtn).click()
 }
 
 //Delete Room
-function roomDelete(cy) {
+function roomDelete(cy, floorNum, roomNum) {
     cy.contains(pageContain)
+    cy.get(roomHeader).contains('Floor ' + floorNum + ', ' + 'Room ' + roomNum)
     cy.get(menuButtonRoom).click()
     cy.get(deleteRoom).click()
+    cy.contains('Floor ' + floorNum + ', ' + 'Room ' + roomNum).should('not.exist')
 }
 
 //Module Exports

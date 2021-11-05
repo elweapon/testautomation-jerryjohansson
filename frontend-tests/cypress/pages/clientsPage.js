@@ -5,6 +5,7 @@ const createNewClient = 'h2 > .btn'
 const menuButtonClient = ':nth-child(3) > .action'
 const editClient = '.menu > :nth-child(1)'
 const deleteClient = '.menu > :nth-child(2)'
+const headerClient = ''
 const backEditBtn = '[href="/clients"]'
 
 //Input fields
@@ -25,18 +26,21 @@ function clientCreate(cy, clientFName, clientLName, clientEmail, clientPhone){
 }
 
 //Edit a Client
-function clientEdit(cy) {
+function clientEdit(cy, clientEmail) {
     cy.contains(pageContain)
+    cy.contains(clientEmail)
     cy.get(menuButtonClient).click()
     cy.get(editClient).click()
     cy.get(backEditBtn).click()
 }
 
 //Delete a Client
-function clientDelete(cy) {
+function clientDelete(cy, clientEmail) {
     cy.contains(pageContain)
+    cy.contains(clientEmail)
     cy.get(menuButtonClient).click()
     cy.get(deleteClient).click()
+    cy.contains(clientEmail).should('not.exist')
 }
 
 //Module Exports

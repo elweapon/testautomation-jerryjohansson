@@ -3,8 +3,9 @@
 //Page elements
 const createNewreservation = 'h2 > .btn'
 const menuButtonreservation = ':nth-child(2) > .action'
-const editreservation = '.menu > :nth-child(1)'
-const deletereservation = '.menu > :nth-child(2)'
+const editReservation = '.menu > :nth-child(1)'
+const deleteReservation = '.menu > :nth-child(2)'
+const headerReservation = ':nth-child(2) > h3'
 const backEditBtn = '[href="/reservations"]'
 
 //Input fields
@@ -29,18 +30,21 @@ function reservationCreate(cy, pastDate, futureDate){
 }
 
 //Edit Reservation
-function reservationEdit(cy) {
+function reservationEdit(cy, pastDate, futureDate) {
     cy.contains(pageContain)
+    cy.get(headerReservation).contains('Mikael Eriksson: ' + pastDate + ' - ' + futureDate)
     cy.get(menuButtonreservation).click()
-    cy.get(editreservation).click()
+    cy.get(editReservation).click()
     cy.get(backEditBtn).click()
 }
 
 //Delete Reservation
-function reservationDelete(cy) {
+function reservationDelete(cy, pastDate, futureDate) {
     cy.contains(pageContain)
+    cy.get(headerReservation).contains('Mikael Eriksson: ' + pastDate + ' - ' + futureDate)
     cy.get(menuButtonreservation).click()
-    cy.get(deletereservation).click()
+    cy.get(deleteReservation).click()
+    cy.contains('Mikael Eriksson: ' + pastDate + ' - ' + futureDate).should('not.exist')
 }
 
 //Module Exports

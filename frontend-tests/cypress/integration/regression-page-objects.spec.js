@@ -58,8 +58,8 @@ describe('Test Suite', function(){
     //Edit/Delete Room test
     it('Edit/Delete Room Test', function(){
         dashFuncs.viewRooms()
-        roomFuncs.roomEdit(cy)
-        roomFuncs.roomDelete(cy)
+        roomFuncs.roomEdit(cy, floorNum, roomNum)
+        roomFuncs.roomDelete(cy, floorNum, roomNum)
     })
 
     //Create a new Client
@@ -71,8 +71,8 @@ describe('Test Suite', function(){
     //Edit/Delete a Client
     it('Edit/Delete Client', function(){
         dashFuncs.viewClients()
-        clientFuncs.clientEdit(cy)
-        clientFuncs.clientDelete(cy)
+        clientFuncs.clientEdit(cy, email)
+        clientFuncs.clientDelete(cy, email)
     })
 
     //Create a new Bill
@@ -84,8 +84,8 @@ describe('Test Suite', function(){
     //Edit/Delete a bill
     it('Edit/Delete Bill', function(){
         dashFuncs.viewBills()
-        billFuncs.billEdit(cy)
-        billFuncs.billDelete(cy)
+        billFuncs.billEdit(cy, billValue)
+        billFuncs.billDelete(cy, billValue)
     })
     
     //Create a new Reserveration
@@ -97,11 +97,9 @@ describe('Test Suite', function(){
     //Edit/Delete a reservation
     it('Edit/Delete Reservation', function(){
         dashFuncs.viewReservations()
-        //reservFuncs.reservationEdit(cy)
-        //Smal wait here beacuse sometimes i get a 404 page not found.
-        //I think it happens beacuse of the page do not load properly 
-        //cy.wait(500)
-        reservFuncs.reservationDelete(cy)
+        //Gives a "404 page not found" Error when checking the "Edit" function
+        //reservFuncs.reservationEdit(cy, datePast, dateFuture)
+        reservFuncs.reservationDelete(cy, datePast, dateFuture)
     })
 
 })
