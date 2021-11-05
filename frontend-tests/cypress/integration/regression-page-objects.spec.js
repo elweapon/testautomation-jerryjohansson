@@ -40,7 +40,6 @@ describe('Test Suite', function(){
         cy.visit(localhost.base_url)
         indexFuncs.checkTitle(cy)
         indexFuncs.validLogin(cy, localhost.username, localhost.password, 'Tester Hotel Overview')
-        cy.wait(500)
     })
 
     //Logout the user after each test
